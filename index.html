@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-tachometer-alt me-2"></i>
+          Admin Dashboard
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-bell me-1"></i>
+                Notifications
+                <span class="badge bg-danger ms-1">3</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">New user registered</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Server maintenance scheduled</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Payment received</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fas fa-user me-1"></i>
+                Admin User
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-user-cog me-2"></i>Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-cog me-2"></i>Settings</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fas fa-sign-out-alt me-2"></i>Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h4><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h4>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active">
+          <a href="#" onclick="showContent('dashboard')">
+            <i class="fas fa-home me-2"></i>Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('users')">
+            <i class="fas fa-users me-2"></i>Users
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('products')">
+            <i class="fas fa-box me-2"></i>Products
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('orders')">
+            <i class="fas fa-shopping-cart me-2"></i>Orders
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('analytics')">
+            <i class="fas fa-chart-bar me-2"></i>Analytics
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="showContent('settings')">
+            <i class="fas fa-cog me-2"></i>Settings
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+      <!-- Dashboard Content -->
+      <div id="dashboard-content" class="content-section active">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h2 class="page-title">Dashboard Overview</h2>
+              <p class="text-muted">Welcome to your admin dashboard</p>
+            </div>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div
+                        class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                      >
+                        Total Users
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        1,234
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div
+                        class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                      >
+                        Total Revenue
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        $45,678
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div
+                        class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                      >
+                        Total Orders
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        856
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div
+                        class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                      >
+                        Pending Orders
+                      </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        23
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clock fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="row mb-4">
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Sales Overview
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-container">
+                    <canvas id="salesChart" width="400" height="200"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Traffic Sources
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-container">
+                    <canvas id="trafficChart" width="400" height="200"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Recent Users
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-borderless">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>John Doe</td>
+                          <td>john@example.com</td>
+                          <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                          <td>Jane Smith</td>
+                          <td>jane@example.com</td>
+                          <td><span class="badge bg-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                          <td>Mike Johnson</td>
+                          <td>mike@example.com</td>
+                          <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Recent Orders
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-borderless">
+                      <thead>
+                        <tr>
+                          <th>Order ID</th>
+                          <th>Customer</th>
+                          <th>Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>#1001</td>
+                          <td>Alice Wilson</td>
+                          <td>$299.99</td>
+                        </tr>
+                        <tr>
+                          <td>#1002</td>
+                          <td>Bob Brown</td>
+                          <td>$189.50</td>
+                        </tr>
+                        <tr>
+                          <td>#1003</td>
+                          <td>Carol Davis</td>
+                          <td>$456.75</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Content -->
+      <div id="users-content" class="content-section">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h2 class="page-title">User Management</h2>
+              <p class="text-muted">Manage all users in the system</p>
+            </div>
+          </div>
+
+          <div class="card shadow">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="m-0 font-weight-bold text-primary">All Users</h6>
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i>Add User
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>John Doe</td>
+                      <td>john@example.com</td>
+                      <td>Admin</td>
+                      <td><span class="badge bg-success">Active</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jane Smith</td>
+                      <td>jane@example.com</td>
+                      <td>User</td>
+                      <td><span class="badge bg-warning">Pending</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Content -->
+      <div id="products-content" class="content-section">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h2 class="page-title">Product Management</h2>
+              <p class="text-muted">Manage all products in the inventory</p>
+            </div>
+          </div>
+
+          <div class="card shadow">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Product Inventory
+                  </h6>
+                </div>
+                <div class="col-auto">
+                  <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus me-1"></i>Add Product
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Laptop Pro</td>
+                      <td>Electronics</td>
+                      <td>$1,299.99</td>
+                      <td>25</td>
+                      <td><span class="badge bg-success">In Stock</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Smartphone X</td>
+                      <td>Electronics</td>
+                      <td>$899.99</td>
+                      <td>5</td>
+                      <td><span class="badge bg-warning">Low Stock</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary me-1">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders Content -->
+      <div id="orders-content" class="content-section">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h2 class="page-title">Order Management</h2>
+              <p class="text-muted">Track and manage all orders</p>
+            </div>
+          </div>
+
+          <div class="card shadow">
+            <div class="card-header">
+              <h6 class="m-0 font-weight-bold text-primary">Recent Orders</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#1001</td>
+                      <td>Alice Wilson</td>
+                      <td>2025-07-20</td>
+                      <td>$299.99</td>
+                      <td><span class="badge bg-success">Completed</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-info me-1">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>#1002</td>
+                      <td>Bob Brown</td>
+                      <td>2025-07-21</td>
+                      <td>$189.50</td>
+                      <td><span class="badge bg-warning">Processing</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-info me-1">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Content -->
+      <div id="analytics-content" class="content-section">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h2 class="page-title">Analytics</h2>
+              <p class="text-muted">View detailed analytics and reports</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <div class="card shadow">
+                <div class="card-header">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    Monthly Revenue
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <canvas id="revenueChart" width="400" height="200"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+              <div class="card shadow">
+                <div class="card-header">
+                  <h6 class="m-0 font-weight-bold text-primary">User Growth</h6>
+                </div>
+                <div class="card-body">
+                  <canvas
+                    id="userGrowthChart"
+                    width="400"
+                    height="200"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Content -->
+      <div id="settings-content" class="content-section">
+        <div class="container-fluid">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h2 class="page-title">Settings</h2>
+              <p class="text-muted">Configure system settings</p>
+            </div>
+          </div>
+
+          <div class="card shadow">
+            <div class="card-header">
+              <h6 class="m-0 font-weight-bold text-primary">
+                General Settings
+              </h6>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="siteName" class="form-label">Site Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="siteName"
+                      value="Admin Dashboard"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="siteEmail" class="form-label">Site Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="siteEmail"
+                      value="admin@example.com"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="siteDescription" class="form-label"
+                    >Site Description</label
+                  >
+                  <textarea class="form-control" id="siteDescription" rows="3">
+A comprehensive admin dashboard for managing your business.</textarea
+                  >
+                </div>
+                <div class="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="maintenanceMode"
+                  />
+                  <label class="form-check-label" for="maintenanceMode">
+                    Enable Maintenance Mode
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Save Settings
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom JS -->
+    <script>
+      // Sidebar toggle functionality
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const mainContent = document.getElementById("main-content");
+        sidebar.classList.toggle("collapsed");
+        mainContent.classList.toggle("expanded");
+      }
+
+      // Content switching functionality
+      function showContent(section) {
+        // Hide all content sections
+        const contentSections = document.querySelectorAll(".content-section");
+        contentSections.forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        // Remove active class from all sidebar items
+        const sidebarItems = document.querySelectorAll(".sidebar-menu li");
+        sidebarItems.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Show selected content
+        document.getElementById(section + "-content").classList.add("active");
+
+        // Add active class to clicked sidebar item
+        event.target.closest("li").classList.add("active");
+      }
+
+      // Initialize charts when document loads
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sales Chart
+        const salesCtx = document.getElementById("salesChart");
+        if (salesCtx) {
+          new Chart(salesCtx, {
+            type: "line",
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+              datasets: [
+                {
+                  label: "Sales",
+                  data: [12000, 19000, 15000, 25000, 22000, 30000],
+                  borderColor: "rgb(75, 192, 192)",
+                  backgroundColor: "rgba(75, 192, 192, 0.2)",
+                  tension: 0.1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
+
+        // Traffic Chart
+        const trafficCtx = document.getElementById("trafficChart");
+        if (trafficCtx) {
+          new Chart(trafficCtx, {
+            type: "doughnut",
+            data: {
+              labels: ["Direct", "Social", "Search", "Referral"],
+              datasets: [
+                {
+                  data: [40, 25, 20, 15],
+                  backgroundColor: ["#4e73df", "#1cc88a", "#36b9cc", "#f6c23e"],
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
+
+        // Revenue Chart
+        const revenueCtx = document.getElementById("revenueChart");
+        if (revenueCtx) {
+          new Chart(revenueCtx, {
+            type: "bar",
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+              datasets: [
+                {
+                  label: "Revenue",
+                  data: [15000, 25000, 18000, 32000, 28000, 35000],
+                  backgroundColor: "rgba(54, 162, 235, 0.2)",
+                  borderColor: "rgba(54, 162, 235, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+        }
+
+        // User Growth Chart
+        const userGrowthCtx = document.getElementById("userGrowthChart");
+        if (userGrowthCtx) {
+          new Chart(userGrowthCtx, {
+            type: "line",
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+              datasets: [
+                {
+                  label: "New Users",
+                  data: [65, 85, 120, 95, 140, 160],
+                  borderColor: "rgb(255, 99, 132)",
+                  backgroundColor: "rgba(255, 99, 132, 0.2)",
+                  tension: 0.1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+            },
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
